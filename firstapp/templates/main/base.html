@@ -1,0 +1,55 @@
+<html>
+    <head>     
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> 
+    <style type="text/css">
+        #side_bar{
+            height: 100%;
+            width: 120px;
+            position: fixed;
+            z-index: 1; /* NOTE: Stay all the way on the top of our screen */
+            top: 0;
+            left: 0;
+            background-color: purple;
+            color: aquamarine;
+        }
+
+        #side_bar a{
+            padding-left: 10%;
+            text-decoration: none;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            display: block;
+            transition: font-size 12s; 
+            transition-duration: 0.2s;
+        }
+
+        #side_bar a:hover{
+            color: white;
+            background-color: red;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .main{
+            margin-left: 130px;
+            padding: 0px 10px;
+        }
+    </style>   
+        {% comment %} The text in between the block is the default value of the title {% endcomment %}
+        <title >{% block title %}Hong's website{% endblock title %} </title> 
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-gradient-to-r from-green-400 to-blue-500">
+        <div id="side_bar">
+            <a href="/">Home</a>
+            <a href="/create">Create</a>
+            <a href="/view">View</a>
+        </div>
+        <div id="content" name="text" class="main">
+                {% block content %}
+                {% endblock content %}
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+{% block title%}View List{% endblock %}
+
+{% block content %}
+    <h1 class="mx-auto w-full text-center text-4xl m-2 mt-6 font-bold text-white">{{list.name}}</h1>
+    <form method="POST" action="#">
+
+        {% csrf_token %}
+        
+        <ul class="w-1/5 mx-auto flex flex-col contents-center items-center">
+            {% for item in list.item_set.all  %}
+                {% if item.complete == False %}
+                    <li class="bg-pink-400 mt-4 w-full text-center text-white rounded-full border-4 shadow-2xl border-gray-700 hover:bg-purple-400 list-inside list-decimal pt-2 pb-2">
+                        {{item.txt}}
+                        <input style="float: inline-end"class="pr-10" type="checkbox" name="check_{{item.id}}" value="clicked">
+                    </li>
+                {% else %}
+                    <li class="bg-pink-400 mt-4 w-full text-center text-white rounded-full border-4 shadow-2xl border-gray-700 hover:bg-purple-400 list-inside list-decimal pt-2 pb-2">
+                        {{item.txt}}
+                        <input style="float: inline-end"class="pr-10" type="checkbox" name="check_{{item.id}}" value="clicked" checked>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="text-center text-red-600" style="font-weight: bold;">New Thing To Do: <input type="text" name="new" style="border: 2px solid gray;">
+        <button type="submit" name="newItem" value="newItem" class="bg-pink-700 rounded px-3 mt-4 text-white border-black border-2 hover:bg-indigo-800" style="margin-left: -6.6px;">Add Item</button>
+        </div>
+        <div class="text-center"><button type="submit" name="save" value="save" class="animate-pulse bg-pink-700 rounded px-3 mt-4 text-white border-black border-2 hover:bg-indigo-800">SAVE</button></div>
+    </form>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'main/base.html' %}
+{% block title %}To Do Lists of {{user}}{% endblock title %}
+
+{% block content %}
+    <div class="bg-red-200 max-w-xs border-2 border-red-800 align-center"><p class="text-purple-800 p-3.5 text-center">(❁´◡`❁) Click to View (❁´◡`❁)</p></div>
+    {% for t in user.todolist_set.all  %}
+    <a class="btn btn-danger mt-2 mr-2" href="/{{t.id}}">{{t.name}}</a>
+        {% endfor %}
+{% endblock content %}

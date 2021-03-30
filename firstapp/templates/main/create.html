@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+
+{% block content%}
+    <div class="m text-white">
+        <h1 class="font-extrabold text-black">Create Page</h1>
+
+        <form method="post" action="/create/">
+            {% csrf_token %}
+            {% comment %}NOTE: render form as a paragraph {% endcomment %}
+            {{form.as_p}}
+            <button type="submit" name="save" class="bg-pink-700 rounded px-3 border-black border-2 hover:bg-indigo-800">Create New</button>
+        </form>
+    </div>
+    <style>
+        input{padding-left: 3px;color: black;}
+        button{transition: all 0.5s linear;}
+        button:hover{transition: all 0.5s linear;}
+    </style>
+{% endblock %}
+
